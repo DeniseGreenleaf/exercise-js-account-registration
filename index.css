@@ -1,0 +1,84 @@
+
+body {
+    display_ flex;
+    font-family: 'Arial', sans-serif;
+    align-items: center;
+    margin:0;
+    padding: 15rem;
+    background-color: #2B1412;
+    height: 100vh;
+    justify-content: center; 
+}
+
+
+
+.registrationFormContainer {
+background-color: #5A2A27; 
+padding: 2.5rem; 
+margin-left: 25rem;
+border-radius: 8px; 
+box-shadw: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+width: 100%; 
+max-width: 500px;
+}
+
+h1 {
+    text-align: center; 
+    color: #C4BBAF;
+}
+
+form {
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    align-items: center;
+}
+
+label {
+    font-size: 14px; 
+    font-weight: bold; 
+    color: #C4BBAF;
+}
+
+input {
+    padding: 10px; 
+    font-size: 14px; 
+    border-radius: 5px; 
+    outline: none;
+    width: 25rem;
+    height: 2rem;
+    background-color: #d4cfc7;
+}
+
+button {
+    padding: 10px; 
+    margin-top: 1rem;
+    background-color: #C4BBAF;
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold;  
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 10rem;
+}
+
+button:hover {
+    background-color: #2B1412;
+    color: white
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* CSS för ogiltiga och giltiga fält */
+input.invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6; /* Ljusröd bakgrund */
+}
+
+input.valid {
+    border: 2px solid green;
+    background-color: #e6ffe6; /* Ljusgrön bakgrund */
+}
