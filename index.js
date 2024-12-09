@@ -1,6 +1,8 @@
 const form = document.querySelector('#registrationForm');
 const inputs = document.querySelectorAll("#registrationForm input"); 
+const submitButton = form.querySelector('button');
 
+// Function to validate fields
 function validateField(field, condition) {
     if (condition) {
         field.classList.add('valid');
@@ -8,54 +10,73 @@ function validateField(field, condition) {
     } else {
         field.classList.add('invalid');
         field.classList.remove('valid');
-        isValid = false;
     }
 }
 
+// Function to handle input validation
 function validateInput(event) {
-    const field = event.target; 
-
+    const field = event.target;
     switch (field.id) {
         case 'fname':
         case 'lname':
-            validateField(field, field.value.trim() !== ""); // Kontrollera att fältet inte är tomt
+            validateField(field, field.value.trim() !== "");
             break;
         case 'email':
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            validateField(field, emailPattern.test(field.value.trim())); // Kontrollera e-postformat
+            validateField(field, emailPattern.test(field.value.trim()));
             break;
         case 'password':
             const passwordValid = field.value.length >= 8 && /\d/.test(field.value);
-            validateField(field, passwordValid); // Kontrollera lösenordets styrka
+            validateField(field, passwordValid);
             break;
         case 'passwordConfirmation':
             const password = document.querySelector('#password');
-            validateField(field, field.value === password.value); // Kontrollera att lösenorden matchar
+            const match = field.value === password.value;
+            validateField(field, match);
             break;
     }
+    toggleSubmitButton();
 }
 
-// Lägg till input-händelsen på varje fält
+// Function to toggle submit button's disabled state
+function toggleSubmitButton() {
+    let allValid = true;
+    inputs.forEach(input => {
+        if (input.classList.contains('invalid') || input.value.trim() === "") {
+            allValid = false;
+        }
+    });
+    submitButton.disabled = !allValid;
+}
+
+// Attach input event listener
 inputs.forEach(input => {
     input.addEventListener('input', validateInput);
 });
 
+// Attach submit event listener
 form.addEventListener('submit', function (event) {
     event.preventDefault();
-
+    
     let isValid = true;
 
-    // Kontrollera alla fält vid submit
     inputs.forEach(input => {
-        input.dispatchEvent(new Event('input')); // Trigga validering för varje fält
+        input.dispatchEvent(new Event('input')); // Trigger validation for each field
         if (input.classList.contains('invalid')) {
             isValid = false;
         }
     });
 
     if (isValid) {
-        alert('Registration successful!');
+        const registrationData = {
+            name: `${document.querySelector("#fname").value} ${document.querySelector("#lname").value}`,
+            username: document.querySelector("#username").value,
+            email: document.querySelector("#email").value,
+            password: document.querySelector("#password").value
+        };
+
+        console.log(registrationData); // Show the registration data
         form.reset();
-        inputs.forEach(input => input.classList.remove('valid', 'invalid')); // Rensa klasser efter lyckad registrering
+        inputs.forEach(input => input.classList.remove('valid', 'invalid')); // Reset styles after successful registration
     }
 });
