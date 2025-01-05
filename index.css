@@ -72,18 +72,12 @@ button:active {
 }
 
 
-/* CSS för ogiltiga och giltiga fält */
-input.invalid {
-    border: 2px solid red;
-    background-color: #ffe6e6; /* Ljusröd bakgrund */
-}
-
-input.valid {
-    border: 2px solid green;
-    background-color: #e6ffe6; /* Ljusgrön bakgrund */
-
-    button:disabled {
-        background-color: #ddd;
-        cursor: not-allowed;
-    }
-}
+.success{
+    border: 2px solid limegreen;
+    background: rgba(50, 205, 50, 0.288)
+  }
+  .error{
+    border: 2px solid crimson;
+    background: rgba(220, 20, 60, 0.226)
+  }
+    

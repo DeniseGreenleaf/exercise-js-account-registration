@@ -7,27 +7,26 @@
   <title>Account Registration</title>
 </head>
 <body>
-    <div class="registrationFormContainer">
     <h1>Registration Form</h1>
-    <form id="registrationForm"> 
-        <label class="focusLabel">First name: </label>
-        <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+    <form class="signup-form"> 
+        <!-- <label class="focusLabel">First name: </label> -->
+        <input type="text" name="username" required class="input-validation" placeholder="Enter your username">
 
-        <label class="focusLabel">Last name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+        <!-- <label class="focusLabel">Last name</label> -->
+        <input type="text" required class="input-validation" placeholder="Enter your name">
 
-        <label class="focusLabel"">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <!-- <label class="focusLabel">Email</label> -->
+        <input type="email" required class="input-validation" placeholder="Enter your email">
 
-        <label class="focusLabel">password</label>
-        <input type="password" id="password" name="password" placeholder="Create a password">
+        <!-- <label class="focusLabel">password</label> -->
+        <input type="password" id="password" required class="input-validation" placeholder="Create a password">
 
-        <label class="focusLabel">Confirm password</label>
-        <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm your password">
+        <!-- <label class="focusLabel">Confirm password</label> -->
+        <input required type="password" id="password-confirm" class="input-validation"  placeholder="Confirm your password">
+        <input type="submit" value="submit">
 
-        <button type="submit">Submit</button>
+        <div class="feedback"></div>
     </form>
-</div>
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
